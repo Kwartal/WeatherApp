@@ -1,0 +1,20 @@
+PODS:
+  - SnapKit (5.6.0)
+  - UIColor_Hex_Swift (5.1.7)
+
+DEPENDENCIES:
+  - SnapKit
+  - UIColor_Hex_Swift
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+    - UIColor_Hex_Swift
+
+SPEC CHECKSUMS:
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  UIColor_Hex_Swift: 31cd3e47440f07a20d2503a36bb0437a445b3c29
+
+PODFILE CHECKSUM: 663c3455c2441e3c62ff4adab77980500d2b63b1
+
+COCOAPODS: 1.11.3

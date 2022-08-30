@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37AA3198BFDE82DE2215B908 /* Pods_Clima.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA99037FB11867A72F4AEB4 /* Pods_Clima.framework */; };
 		716B144828BCF6AE001E9401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B144728BCF6AE001E9401 /* AppDelegate.swift */; };
 		716B144A28BCF6AE001E9401 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B144928BCF6AE001E9401 /* SceneDelegate.swift */; };
 		716B144C28BCF6AE001E9401 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B144B28BCF6AE001E9401 /* ViewController.swift */; };
-		716B144F28BCF6AE001E9401 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716B144D28BCF6AE001E9401 /* Main.storyboard */; };
 		716B145128BCF6AF001E9401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716B145028BCF6AF001E9401 /* Assets.xcassets */; };
 		716B145428BCF6AF001E9401 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716B145228BCF6AF001E9401 /* LaunchScreen.storyboard */; };
+		716B146028BE0566001E9401 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716B145F28BE0566001E9401 /* UIColor + Extension.swift */; };
+		719A215128BE06B0001CD8D3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A215028BE06B0001CD8D3 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02E51580D71A5EBD5127C1A7 /* Pods-Clima.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.debug.xcconfig"; path = "Target Support Files/Pods-Clima/Pods-Clima.debug.xcconfig"; sourceTree = "<group>"; };
 		716B144428BCF6AE001E9401 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716B144728BCF6AE001E9401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		716B144928BCF6AE001E9401 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		716B144B28BCF6AE001E9401 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		716B144E28BCF6AE001E9401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		716B145028BCF6AF001E9401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		716B145328BCF6AF001E9401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		716B145528BCF6AF001E9401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		716B145F28BE0566001E9401 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		719A215028BE06B0001CD8D3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A42C2C5CEE31F025B4B9D138 /* Pods-Clima.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.release.xcconfig"; path = "Target Support Files/Pods-Clima/Pods-Clima.release.xcconfig"; sourceTree = "<group>"; };
+		CFA99037FB11867A72F4AEB4 /* Pods_Clima.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clima.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37AA3198BFDE82DE2215B908 /* Pods_Clima.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				716B144628BCF6AE001E9401 /* Clima */,
 				716B144528BCF6AE001E9401 /* Products */,
+				DB1820EA7607773A41C7677F /* Pods */,
+				C2060D9B6017712F27B297BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +68,38 @@
 				716B144728BCF6AE001E9401 /* AppDelegate.swift */,
 				716B144928BCF6AE001E9401 /* SceneDelegate.swift */,
 				716B144B28BCF6AE001E9401 /* ViewController.swift */,
-				716B144D28BCF6AE001E9401 /* Main.storyboard */,
+				716B146128BE056A001E9401 /* Extensions */,
 				716B145028BCF6AF001E9401 /* Assets.xcassets */,
 				716B145228BCF6AF001E9401 /* LaunchScreen.storyboard */,
 				716B145528BCF6AF001E9401 /* Info.plist */,
 			);
 			path = Clima;
+			sourceTree = "<group>";
+		};
+		716B146128BE056A001E9401 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				716B145F28BE0566001E9401 /* UIColor + Extension.swift */,
+				719A215028BE06B0001CD8D3 /* Colors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C2060D9B6017712F27B297BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFA99037FB11867A72F4AEB4 /* Pods_Clima.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB1820EA7607773A41C7677F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02E51580D71A5EBD5127C1A7 /* Pods-Clima.debug.xcconfig */,
+				A42C2C5CEE31F025B4B9D138 /* Pods-Clima.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 716B145828BCF6AF001E9401 /* Build configuration list for PBXNativeTarget "Clima" */;
 			buildPhases = (
+				BB71559C62629EFE9063CA03 /* [CP] Check Pods Manifest.lock */,
 				716B144028BCF6AE001E9401 /* Sources */,
 				716B144128BCF6AE001E9401 /* Frameworks */,
 				716B144228BCF6AE001E9401 /* Resources */,
+				CA045BE3194A8B90A5574F35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,11 +164,52 @@
 			files = (
 				716B145428BCF6AF001E9401 /* LaunchScreen.storyboard in Resources */,
 				716B145128BCF6AF001E9401 /* Assets.xcassets in Resources */,
-				716B144F28BCF6AE001E9401 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB71559C62629EFE9063CA03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Clima-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA045BE3194A8B90A5574F35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Clima/Pods-Clima-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Clima/Pods-Clima-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Clima/Pods-Clima-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		716B144028BCF6AE001E9401 /* Sources */ = {
@@ -139,6 +217,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				716B144C28BCF6AE001E9401 /* ViewController.swift in Sources */,
+				719A215128BE06B0001CD8D3 /* Colors.swift in Sources */,
+				716B146028BE0566001E9401 /* UIColor + Extension.swift in Sources */,
 				716B144828BCF6AE001E9401 /* AppDelegate.swift in Sources */,
 				716B144A28BCF6AE001E9401 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +227,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		716B144D28BCF6AE001E9401 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				716B144E28BCF6AE001E9401 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		716B145228BCF6AF001E9401 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +354,7 @@
 		};
 		716B145928BCF6AF001E9401 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02E51580D71A5EBD5127C1A7 /* Pods-Clima.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,7 +365,6 @@
 				INFOPLIST_FILE = Clima/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -310,6 +382,7 @@
 		};
 		716B145A28BCF6AF001E9401 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A42C2C5CEE31F025B4B9D138 /* Pods-Clima.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,7 +393,6 @@
 				INFOPLIST_FILE = Clima/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
