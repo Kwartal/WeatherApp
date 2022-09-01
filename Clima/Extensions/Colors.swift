@@ -19,7 +19,7 @@ public class Colors {
      */
     public static let text = UIColor.create(light: "#262626", dark: "#FFFFFF")
     
-    public static let weatherColor = UIColor.create(light: "#A2845E", dark: "#FF453A")
+    public static let weatherColor = UIColor.create(light: "#000000", dark: "#FFFFFF")
 
     /**
      Используется для точечных цветов когда нужно кастомное значение альфы например. Должен быть составлен из цветов перечисленных выше

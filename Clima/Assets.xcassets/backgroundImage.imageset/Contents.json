@@ -1,15 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
-      "color" : {
-        "color-space" : "srgb",
-        "components" : {
-          "alpha" : "1.000",
-          "blue" : "0.000",
-          "green" : "0.000",
-          "red" : "0.000"
-        }
-      },
+      "filename" : "light_background.pdf",
       "idiom" : "universal"
     },
     {
@@ -19,10 +11,7 @@
           "value" : "light"
         }
       ],
-      "color" : {
-        "platform" : "ios",
-        "reference" : "darkTextColor"
-      },
+      "filename" : "light_background-1.pdf",
       "idiom" : "universal"
     },
     {
@@ -32,15 +21,15 @@
           "value" : "dark"
         }
       ],
-      "color" : {
-        "platform" : "ios",
-        "reference" : "labelColor"
-      },
+      "filename" : "dark_background.pdf",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }
