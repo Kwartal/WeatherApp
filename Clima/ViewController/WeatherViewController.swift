@@ -12,14 +12,13 @@ import CoreLocation
 class WeatherViewController: UIViewController {
     // MARK: - UI Elements
     
-    private var citySearchTextField = UITextField()
     private var locationButton = UIButton()
     private var searchButton = UIButton()
     private var weatherStatusImage = UIImageView()
     private var temperatureLabel = UILabel()
+    private var feelsLikeTemperatureLabel = UILabel()
     private var cityLabel = UILabel()
     
-    var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
     
 
@@ -38,14 +37,7 @@ class WeatherViewController: UIViewController {
         setupSubviews()
         configureConstraints()
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-        
-        
-        weatherManager.delegate = self
-        citySearchTextField.delegate = self
-   
+
     }
   
 }
@@ -53,7 +45,6 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController {
     
     private func addSubviews() {
-        view.addSubview(citySearchTextField)
         view.addSubview(locationButton)
         view.addSubview(searchButton)
         view.addSubview(weatherStatusImage)
@@ -63,15 +54,7 @@ extension WeatherViewController {
     }
     
     private func setupSubviews() {
-        citySearchTextField.placeholder = "Search"
-        citySearchTextField.layer.cornerRadius = 10
-        citySearchTextField.tintColor = .label
-        citySearchTextField.textAlignment = .right
-        citySearchTextField.autocapitalizationType = .words
-        citySearchTextField.backgroundColor = .lightGray.withAlphaComponent(0.3)
-        citySearchTextField.delegate = self
-        citySearchTextField.returnKeyType = .go
-        
+
         locationButton.setBackgroundImage(UIImage(systemName: "location.circle.fill"), for: .normal)
         locationButton.tintColor = .label
         
@@ -95,28 +78,21 @@ extension WeatherViewController {
     }
     
     private func configureConstraints() {
-        citySearchTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(44)
-            $0.leading.trailing.equalToSuperview().inset(60)
-            $0.height.equalTo(50)
-        }
         
         locationButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(51)
             $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalTo(citySearchTextField.snp.leading)
-            $0.height.equalTo(locationButton.snp.width)
+            $0.size.equalTo(40)
         }
         
         searchButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(51)
             $0.trailing.equalToSuperview().inset(16)
-            $0.leading.equalTo(citySearchTextField.snp.trailing)
             $0.size.equalTo(40)
         }
         
         weatherStatusImage.snp.makeConstraints {
-            $0.top.equalTo(citySearchTextField.snp.bottom).offset(10)
+            $0.top.equalTo(searchButton.snp.bottom).offset(10)
             $0.trailing.equalToSuperview().inset(30)
             $0.size.equalTo(150)
         }
@@ -134,53 +110,8 @@ extension WeatherViewController {
     }
     
     @objc private func searchButtonPressed() {
-        print(citySearchTextField.text ?? "")
+        print("Search button pressed")
     }
 }
 
-extension WeatherViewController: UITextFieldDelegate, WeatherManagerDelegate {
-    func didFailWithError(error: Error) {
-        print(error)
-    }
-    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchButtonPressed()
-        citySearchTextField.endEditing(true)
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        if let city = citySearchTextField.text {
-            weatherManager.fetchWeather(cityName: city)
-        }
-        
-        citySearchTextField.text = ""
-    }
-    
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-        DispatchQueue.main.async {
-            self.temperatureLabel.text = weather.temperatureString
-            self.weatherStatusImage.image = UIImage(systemName: weather.conditionName)
-                    }
-    }
-    
-}
 
-//MARK: - CLLocationManagerDelegate
-
-extension WeatherViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            weatherManager.fetchWeather(latitude: lat, longitude: lon)
-        }
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
-}

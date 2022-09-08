@@ -6,3 +6,26 @@
 //
 
 import Foundation
+import UIKit
+
+extension WeatherViewController {
+    func presentSearchAlertController(with title: String?, message: String?, style: UIAlertController.Style) {
+        let searchAlertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        searchAlertController.addTextField { tf in
+            let cities = ["Moscow", "Stambul", "Paris", "New York"]
+            tf.placeholder = cities.randomElement()
+        }
+        let search = UIAlertAction(title: "Seatch", style: .default) { action in
+            let textField = searchAlertController.textFields?.first
+            guard let cityName = textField?.text else { return }
+            if cityName != "" {
+                print("seatch info for the \(cityName)")
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        searchAlertController.addAction(search)
+        searchAlertController.addAction(cancel)
+        present(searchAlertController, animated: true, completion: nil)
+    }
+}
