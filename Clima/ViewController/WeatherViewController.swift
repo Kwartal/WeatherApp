@@ -27,12 +27,8 @@ class WeatherViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "backgroundImage")
-        backgroundImage.contentMode = .scaleAspectFill
-        view.insertSubview(backgroundImage, at: 0)
-        
+
+        backgroundSettings()
         addSubviews()
         setupSubviews()
         configureConstraints()
@@ -50,6 +46,7 @@ extension WeatherViewController {
         view.addSubview(weatherStatusImage)
         view.addSubview(temperatureLabel)
         view.addSubview(cityLabel)
+        view.addSubview(feelsLikeTemperatureLabel)
         
     }
     
@@ -74,6 +71,11 @@ extension WeatherViewController {
         cityLabel.text = "London"
         cityLabel.font = .systemFont(ofSize: 30, weight: .bold)
         cityLabel.adjustsFontSizeToFitWidth = true
+        
+        feelsLikeTemperatureLabel.text = "Feelslike " + "25" + "℃"
+        feelsLikeTemperatureLabel.font = .systemFont(ofSize: 25, weight: .regular)
+        feelsLikeTemperatureLabel.adjustsFontSizeToFitWidth = true
+        feelsLikeTemperatureLabel.textColor = Colors.weatherColor
         
     }
     
@@ -100,13 +102,29 @@ extension WeatherViewController {
         temperatureLabel.snp.makeConstraints {
             $0.top.equalTo(weatherStatusImage.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().inset(16)
-            $0.size.equalTo(150)
+            $0.size.equalTo(120)
         }
+        
+        
+        feelsLikeTemperatureLabel.snp.makeConstraints {
+            $0.top.equalTo(temperatureLabel.snp.bottom).offset(5)
+            $0.trailing.equalTo(temperatureLabel)
+        }
+        
         cityLabel.snp.makeConstraints {
-            $0.top.equalTo(temperatureLabel.snp.bottom).offset(10)
+            $0.top.equalTo(feelsLikeTemperatureLabel.snp.bottom).offset(10)
             $0.trailing.equalToSuperview().inset(40)
             $0.height.equalTo(30)
         }
+        
+    }
+    
+    private func backgroundSettings() {
+        view.backgroundColor = .systemBackground
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "backgroundImage")
+        backgroundImage.contentMode = .scaleAspectFill
+        view.insertSubview(backgroundImage, at: 0)
     }
     
     @objc private func searchButtonPressed() {
