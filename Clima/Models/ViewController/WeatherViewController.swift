@@ -19,6 +19,8 @@ class WeatherViewController: UIViewController {
     private var feelsLikeTemperatureLabel = UILabel()
     private var cityLabel = UILabel()
     
+    var networkWeatherManager = NetworkWeatherManager()
+    
     let locationManager = CLLocationManager()
     
 
@@ -27,7 +29,7 @@ class WeatherViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        networkWeatherManager.fetchCurrentWeather(for: "London")
         backgroundSettings()
         addSubviews()
         setupSubviews()
@@ -128,7 +130,7 @@ extension WeatherViewController {
     }
     
     @objc private func searchButtonPressed() {
-        print("Search button pressed")
+        presentSearchAlertController(with: "Enter city name", message: nil, style: .alert)
     }
 }
 
