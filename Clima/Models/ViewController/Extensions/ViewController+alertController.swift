@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension WeatherViewController {
-    func presentSearchAlertController(with title: String?, message: String?, style: UIAlertController.Style) {
+    func presentSearchAlertController(with title: String?, message: String?, style: UIAlertController.Style, complitionHandler: @escaping (String) -> Void) {
         let searchAlertController = UIAlertController(title: title, message: message, preferredStyle: style)
         searchAlertController.addTextField { tf in
             let cities = ["Moscow", "Stambul", "Paris", "New York"]
@@ -19,7 +19,9 @@ extension WeatherViewController {
             let textField = searchAlertController.textFields?.first
             guard let cityName = textField?.text else { return }
             if cityName != "" {
-                print("seatch info for the \(cityName)")
+//                self.networkWeatherManager.fetchCurrentWeather(for: cityName)
+                let city = cityName.split(separator: " ").joined(separator: "%20")
+                complitionHandler(city)
             }
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

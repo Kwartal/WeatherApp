@@ -23,21 +23,26 @@ class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
-
-    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkWeatherManager.fetchCurrentWeather(for: "London")
+        
+        networkWeatherManager.onCompletion = { [weak self] currentWeather in
+            guard let self = self else { return }
+            self.updateInterfaceWith(weather: currentWeather)
+            
+            print(currentWeather.cityName)
+        }
+        networkWeatherManager.delegate = self
+        
         backgroundSettings()
         addSubviews()
         setupSubviews()
         configureConstraints()
-        
 
     }
-  
+    
 }
 
 extension WeatherViewController {
@@ -53,7 +58,7 @@ extension WeatherViewController {
     }
     
     private func setupSubviews() {
-
+        
         locationButton.setBackgroundImage(UIImage(systemName: "location.circle.fill"), for: .normal)
         locationButton.tintColor = .label
         
@@ -61,14 +66,14 @@ extension WeatherViewController {
         searchButton.tintColor = .label
         searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
         
-        weatherStatusImage.image = UIImage(systemName: "cloud.drizzle") 
+        weatherStatusImage.image = UIImage(systemName: "cloud.drizzle")
         weatherStatusImage.tintColor = .label
         
         temperatureLabel.text = "21" + "℃"
         temperatureLabel.font = .systemFont(ofSize: 50, weight: .bold)
         temperatureLabel.adjustsFontSizeToFitWidth = true
         temperatureLabel.textColor = Colors.weatherColor
-
+        
         
         cityLabel.text = "London"
         cityLabel.font = .systemFont(ofSize: 30, weight: .bold)
@@ -130,8 +135,25 @@ extension WeatherViewController {
     }
     
     @objc private func searchButtonPressed() {
-        presentSearchAlertController(with: "Enter city name", message: nil, style: .alert)
+        presentSearchAlertController(with: "Enter city name", message: nil, style: .alert) { [unowned self] city in
+            self.networkWeatherManager.fetchCurrentWeather(for: city)
+        }
+    }
+    
+    private func updateInterfaceWith(weather: CurrentWeather) {
+        DispatchQueue.main.async {
+            self.cityLabel.text = weather.cityName
+            self.temperatureLabel.text = weather.temperatureString
+            self.feelsLikeTemperatureLabel.text = weather.feelsLikeTemperatureString
+            self.weatherStatusImage.image = UIImage(systemName: weather.systemIconNameString)
+        }
+
     }
 }
 
+extension WeatherViewController: NetworkWeatherManagerDelegate {
+    func updateInterface(_: NetworkWeatherManager, with currentWeather: CurrentWeather) {
+        print(currentWeather.cityName)
+    }
+}
 
