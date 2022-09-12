@@ -12,7 +12,6 @@ import CoreLocation
 class WeatherViewController: UIViewController {
     // MARK: - UI Elements
     
-    private var locationButton = UIButton()
     private var searchButton = UIButton()
     private var weatherStatusImage = UIImageView()
     private var temperatureLabel = UILabel()
@@ -50,27 +49,23 @@ class WeatherViewController: UIViewController {
         addSubviews()
         setupSubviews()
         configureConstraints()
-
     }
     
 }
 
+
 extension WeatherViewController {
     
     private func addSubviews() {
-        view.addSubview(locationButton)
         view.addSubview(searchButton)
         view.addSubview(weatherStatusImage)
         view.addSubview(temperatureLabel)
         view.addSubview(cityLabel)
         view.addSubview(feelsLikeTemperatureLabel)
-        
     }
     
     private func setupSubviews() {
         
-        locationButton.setBackgroundImage(UIImage(systemName: "location.circle.fill"), for: .normal)
-        locationButton.tintColor = .label
         
         searchButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchButton.tintColor = .label
@@ -97,13 +92,7 @@ extension WeatherViewController {
     }
     
     private func configureConstraints() {
-        
-        locationButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(51)
-            $0.leading.equalToSuperview().offset(16)
-            $0.size.equalTo(40)
-        }
-        
+    
         searchButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(51)
             $0.trailing.equalToSuperview().inset(16)
@@ -135,6 +124,8 @@ extension WeatherViewController {
         }
         
     }
+    
+    //MARK: - Private methods
     
     private func backgroundSettings() {
         view.backgroundColor = .systemBackground
