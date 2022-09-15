@@ -13,6 +13,7 @@ struct CurrentWeather {
     var temperatureString: String {
         return String(format: "%.0f", temperature) + "℃"
     }
+    
     let feelsLikeTemperature: Double
     var feelsLikeTemperatureString: String {
         return "Feelslike " + String(format: "%.0f", feelsLikeTemperature) + "℃"

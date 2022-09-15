@@ -10,14 +10,23 @@ import SnapKit
 import CoreLocation
 
 class WeatherViewController: UIViewController {
-    // MARK: - UI Elements
     
+<<<<<<< HEAD
+    // MARK: - UI Elements
+    private var locationButton = UIButton()
+=======
+>>>>>>> main
     private var searchButton = UIButton()
     private var weatherStatusImage = UIImageView()
     private var temperatureLabel = UILabel()
     private var feelsLikeTemperatureLabel = UILabel()
     private var cityLabel = UILabel()
     
+<<<<<<< HEAD
+    private var networkWeatherManager = NetworkWeatherManager()
+    private let locationManager = CLLocationManager()
+    
+=======
     var networkWeatherManager = NetworkWeatherManager()
     
     lazy var locationManager: CLLocationManager = {
@@ -27,6 +36,7 @@ class WeatherViewController: UIViewController {
         lm.requestWhenInUseAuthorization()
         return lm
     }()
+>>>>>>> main
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -44,13 +54,11 @@ class WeatherViewController: UIViewController {
         }
         
         networkWeatherManager.delegate = self
-        
         backgroundSettings()
         addSubviews()
         setupSubviews()
         configureConstraints()
     }
-    
 }
 
 
@@ -79,7 +87,6 @@ extension WeatherViewController {
         temperatureLabel.adjustsFontSizeToFitWidth = true
         temperatureLabel.textColor = Colors.weatherColor
         
-        
         cityLabel.text = "London"
         cityLabel.font = .systemFont(ofSize: 30, weight: .bold)
         cityLabel.adjustsFontSizeToFitWidth = true
@@ -88,7 +95,6 @@ extension WeatherViewController {
         feelsLikeTemperatureLabel.font = .systemFont(ofSize: 18, weight: .regular)
         feelsLikeTemperatureLabel.adjustsFontSizeToFitWidth = true
         feelsLikeTemperatureLabel.textColor = Colors.weatherColor
-        
     }
     
     private func configureConstraints() {
@@ -122,11 +128,14 @@ extension WeatherViewController {
             $0.trailing.equalTo(searchButton.snp.leading).inset(5)
             $0.height.equalTo(30)
         }
-        
     }
     
+<<<<<<< HEAD
+    // MARK: - Private Methods
+=======
     //MARK: - Private methods
     
+>>>>>>> main
     private func backgroundSettings() {
         view.backgroundColor = .systemBackground
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -148,7 +157,6 @@ extension WeatherViewController {
             self.feelsLikeTemperatureLabel.text = weather.feelsLikeTemperatureString
             self.weatherStatusImage.image = UIImage(systemName: weather.systemIconNameString)
         }
-
     }
 }
 
