@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct CurrentWeatherData: Codable {
     let name: String
     let main: Main
