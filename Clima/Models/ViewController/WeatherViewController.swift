@@ -73,7 +73,7 @@ extension WeatherViewController {
         cityLabel.adjustsFontSizeToFitWidth = true
         
         feelsLikeTemperatureLabel.text = "Feelslike " + "25" + "℃"
-        feelsLikeTemperatureLabel.font = .systemFont(ofSize: 25, weight: .regular)
+        feelsLikeTemperatureLabel.font = .systemFont(ofSize: 18, weight: .regular)
         feelsLikeTemperatureLabel.adjustsFontSizeToFitWidth = true
         feelsLikeTemperatureLabel.textColor = Colors.weatherColor
     }
@@ -101,7 +101,8 @@ extension WeatherViewController {
         temperatureLabel.snp.makeConstraints {
             $0.top.equalTo(weatherStatusImage.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().inset(16)
-            $0.size.equalTo(120)
+            $0.width.equalTo(120)
+            $0.height.equalTo(60)
         }
         
         
