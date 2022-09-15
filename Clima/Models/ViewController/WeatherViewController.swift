@@ -11,17 +11,32 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
+<<<<<<< HEAD
     // MARK: - UI Elements
     private var locationButton = UIButton()
+=======
+>>>>>>> main
     private var searchButton = UIButton()
     private var weatherStatusImage = UIImageView()
     private var temperatureLabel = UILabel()
     private var feelsLikeTemperatureLabel = UILabel()
     private var cityLabel = UILabel()
     
+<<<<<<< HEAD
     private var networkWeatherManager = NetworkWeatherManager()
     private let locationManager = CLLocationManager()
     
+=======
+    var networkWeatherManager = NetworkWeatherManager()
+    
+    lazy var locationManager: CLLocationManager = {
+        let lm = CLLocationManager()
+        lm.delegate = self
+        lm.desiredAccuracy = kCLLocationAccuracyKilometer
+        lm.requestWhenInUseAuthorization()
+        return lm
+    }()
+>>>>>>> main
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -33,6 +48,11 @@ class WeatherViewController: UIViewController {
             
             print(currentWeather.cityName)
         }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestLocation()
+        }
+        
         networkWeatherManager.delegate = self
         backgroundSettings()
         addSubviews()
@@ -41,10 +61,10 @@ class WeatherViewController: UIViewController {
     }
 }
 
+
 extension WeatherViewController {
     
     private func addSubviews() {
-        view.addSubview(locationButton)
         view.addSubview(searchButton)
         view.addSubview(weatherStatusImage)
         view.addSubview(temperatureLabel)
@@ -54,8 +74,6 @@ extension WeatherViewController {
     
     private func setupSubviews() {
         
-        locationButton.setBackgroundImage(UIImage(systemName: "location.circle.fill"), for: .normal)
-        locationButton.tintColor = .label
         
         searchButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchButton.tintColor = .label
@@ -74,19 +92,13 @@ extension WeatherViewController {
         cityLabel.adjustsFontSizeToFitWidth = true
         
         feelsLikeTemperatureLabel.text = "Feelslike " + "25" + "℃"
-        feelsLikeTemperatureLabel.font = .systemFont(ofSize: 25, weight: .regular)
+        feelsLikeTemperatureLabel.font = .systemFont(ofSize: 18, weight: .regular)
         feelsLikeTemperatureLabel.adjustsFontSizeToFitWidth = true
         feelsLikeTemperatureLabel.textColor = Colors.weatherColor
     }
     
     private func configureConstraints() {
-        
-        locationButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(51)
-            $0.leading.equalToSuperview().offset(16)
-            $0.size.equalTo(40)
-        }
-        
+    
         searchButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(51)
             $0.trailing.equalToSuperview().inset(16)
@@ -96,29 +108,34 @@ extension WeatherViewController {
         weatherStatusImage.snp.makeConstraints {
             $0.top.equalTo(searchButton.snp.bottom).offset(10)
             $0.trailing.equalToSuperview().inset(30)
-            $0.size.equalTo(150)
+            $0.size.equalTo(200)
         }
         
         temperatureLabel.snp.makeConstraints {
             $0.top.equalTo(weatherStatusImage.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().inset(16)
-            $0.size.equalTo(120)
+            $0.size.equalTo(100)
         }
         
         
         feelsLikeTemperatureLabel.snp.makeConstraints {
-            $0.top.equalTo(temperatureLabel.snp.bottom).offset(5)
+            $0.top.equalTo(temperatureLabel.snp.bottom)
             $0.trailing.equalTo(temperatureLabel)
         }
         
         cityLabel.snp.makeConstraints {
-            $0.top.equalTo(feelsLikeTemperatureLabel.snp.bottom).offset(10)
-            $0.trailing.equalToSuperview().inset(40)
+            $0.top.equalTo(searchButton)
+            $0.trailing.equalTo(searchButton.snp.leading).inset(5)
             $0.height.equalTo(30)
         }
     }
     
+<<<<<<< HEAD
     // MARK: - Private Methods
+=======
+    //MARK: - Private methods
+    
+>>>>>>> main
     private func backgroundSettings() {
         view.backgroundColor = .systemBackground
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -129,7 +146,7 @@ extension WeatherViewController {
     
     @objc private func searchButtonPressed() {
         presentSearchAlertController(with: "Enter city name", message: nil, style: .alert) { [unowned self] city in
-            self.networkWeatherManager.fetchCurrentWeather(for: city)
+            self.networkWeatherManager.fetchCurrentWeather(forRequestTupe: .cityName(city: city))
         }
     }
     
@@ -146,6 +163,23 @@ extension WeatherViewController {
 extension WeatherViewController: NetworkWeatherManagerDelegate {
     func updateInterface(_: NetworkWeatherManager, with currentWeather: CurrentWeather) {
         print(currentWeather.cityName)
+    }
+}
+
+// MARK: - CLLoacationManagerDelegate
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        
+        networkWeatherManager.fetchCurrentWeather(forRequestTupe: .coordinate(latitude: latitude, longitude: longitude))
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }
 

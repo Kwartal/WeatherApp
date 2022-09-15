@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol NetworkWeatherManagerDelegate: AnyObject {
     func updateInterface(_: NetworkWeatherManager, with currentWeather: CurrentWeather)
@@ -13,13 +14,38 @@ protocol NetworkWeatherManagerDelegate: AnyObject {
 
 class NetworkWeatherManager {
     
-  weak var delegate: NetworkWeatherManagerDelegate?
+    enum RequestType {
+        case cityName(city: String)
+        case coordinate(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    }
     
+    func fetchCurrentWeather(forRequestTupe requestType: RequestType) {
+        var urlString = ""
+        switch requestType {
+        case .cityName(let city):
+            urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric"
+        case .coordinate(let latitude, let longitude):
+            urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=metric"
+        }
+        performRequest(with: urlString)
+        
+    }
+    
+    weak var delegate: NetworkWeatherManagerDelegate?
     
     var onCompletion: ((CurrentWeather) -> Void)?
     
-    func fetchCurrentWeather(for city: String) {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric"
+    //    func fetchCurrentWeather(for city: String) {
+    //        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric"
+    //        performRequest(with: urlString)
+    //    }
+    //
+    //    func fetchCurrentWeather(for latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    //        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)&units=metric"
+    //        performRequest(with: urlString)
+    //    }
+    
+    func performRequest(with urlString: String) {
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, error in
